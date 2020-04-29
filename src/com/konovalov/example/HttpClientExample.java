@@ -14,7 +14,7 @@ public class HttpClientExample {
         String urlYandex = "https://yandex.ru";
         String gitHubUser = "https://api.github.com/users?since=135";
 
-        String result = run(gitHubUser, client);
+        String result = run(urlYandex, client);
         System.out.println("Result: " + result);
     }
 
@@ -25,6 +25,7 @@ public class HttpClientExample {
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
+            assert response.body() != null;
             return response.body().string();
         }
     }
